@@ -1,0 +1,110 @@
+<html>
+<head>
+	<link rel="stylesheet" href="csstest.css" type="text/css"
+</head>
+
+<body>
+
+
+	<div id='red'>
+	  <label>red: 255</label>
+	  <input max='255' min='0' step='1' type='range' value='255'>
+	</div>
+	<div id='green'>
+	  <label>green: 0</label>
+	  <input max='255' min='0' step='1' type='range' value='0'>
+	</div>
+	<div id='blue'>
+	  <label>blue: 0</label>
+	  <input max='255' min='0' step='1' type='range' value='0'>
+	</div>
+	<div id='alpha'>
+	  <label>alpha: 255</label>
+	  <input max='255' min='0' step='1' type='range' value='255'>
+	</div>
+	<canvas height='100' id='canvas' width='100'></canvas>
+
+	
+	<canvas id="myCanvas" width="100" height="100">
+	
+	<script>
+		
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		//var imgData = ctx.createImageData(100, 100);
+		
+		var currentColor = {
+			red: 255,
+			green: 0,
+			blue: 255,
+			alpha: 255
+		};	
+		
+		let {red, green, blue, alpha} = currentColor;
+		drawCircle(red, green, blue, alpha);
+		
+		<!----- draw function to draw !----->
+		function draw(red, green, blue, alpha)
+		{
+			var imageData = ctx.createImageData(100,100);
+			
+			var i;
+			
+			for(i = 0; i < imageData.data.length; i += 4)
+			{
+				imageData.data[i] = red;
+				imageData.data[i+1] = green;
+				imageData.data[i+2] = blue;
+				imageData.data[i+3] = alpha;
+			}
+			
+
+			ctx.putImageData(imageData, 0, 0);		
+		}
+		
+		<!----- DRAW CIRCLE FUNCTION !----->
+		function drawCircle(red, green, blue, alpha)
+		{
+			var radius = 50;
+			var image = ctx.createImageData(radius*2, radius*2);
+			var imageData = image.data;
+			
+			var x;
+			var y;
+			
+			for(x = -radius; x < radius; x++)
+			{
+				for(y = -radius; y < radius; y++)
+				{
+					var distance = Math.sqrt(x*x + y*y);
+					
+					if(distance > radius)
+					{
+						continue;
+					}
+					
+					var rowLength = 2*radius;
+					var adjustedX = x + radius;
+					var adjustedY = y + radius;
+					var pixelWidth = 4;
+					var index = (adjustedX + (adjustedY * rowLength)) * pixelWidth;
+					
+					imageData[index] = red;
+					imageData[index+1] = green;
+					imageData[index+2] = blue;
+					imageData[index+3] = alpha;
+				}
+			}
+			
+			ctx.putImageData(image, 0, 0);
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+	
+</body>
+<html>
