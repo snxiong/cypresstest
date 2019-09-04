@@ -16,6 +16,8 @@
 	<input type="radio" name="colorCombo" id="TeTratic">TeTratic Double-Complementary<br>
 </form>
 
+<p id="colorComp"></p>
+
 <br>
 
 
@@ -113,8 +115,29 @@
 		drawPieSlice(context, 250,250,90, (4*Math.PI)/3, (3*Math.PI)/2, thirdCircle[11]);
 		
 		
+		var firstComplementary;
+		var secondComplementary;
 		
-		//
+		var firstAnalogous;
+		var secondAnalogous;
+		var thirdAnalogous;
+		
+		var firstTriadic;
+		var secondTriadic;
+		var thirdTriadic;
+		
+		var firstSplitComp;
+		var secondSplitComp;
+		var thirdSplitComp;
+		
+		var firstTetratic;
+		var secondTetratic;
+		var thirdTetratic;
+		var fourthTetratic;
+		
+		//-----------------------------------------------------------------------
+		//-------------------------------- BASICALLY MAIN FUNCTION---------------
+		//-----------------------------------------------------------------------
 		$('#example').mousedown(function(e) {
 			var pos = findPos(this);
 			var x = e.pageX - pos.x;
@@ -129,6 +152,9 @@
 			var circleLevel = 0;
 			var colorWheelArray;
 			
+			
+			// FOR STATEMENT THAT WILL FIGURE OUT WHETHER THE USER SELECTED A COLOR FROM
+			// THE FIRST, SECOND, OR THIRD CIRCLE
 			for(i = 0; i < 12; i++)
 			{
 				if(firstCircle[i] == hex)
@@ -154,23 +180,42 @@
 				}
 			}
 			
+			// VARIABLES THAT WILL HOLD WHICH ELEMENT IN THE COLORWHEELARRAY THAT IS CURRENTLY IN PLAY
 			var w = 0;
 			var x = 0;
 			var y = 0;
 			var z = 0;
 			
+			
+			// IF STATEMENTS THAT WILL FIGURE OUT THE REST OF THE COLOR COMBINATIONS;
 			if(document.getElementById('Complementary').checked)
 			{
+			
 				for(i = 0; i < 12; i++)
 				{
 					if(colorWheelArray[i] == hex)
 					{
-						w = i;
-						x = i + 6;
+						if(i < 6)
+						{
+							w = i;
+							x = i + 6;
+						}
+						else if(i >= 6)
+						{
+							w = i;
+							x = i - 6;
+						}
 					}
 				}	
+				document.getElementById("colorComp").innerHTML = colorWheelArray[x] + " [" + w + "] [" + x + "] ";
 				
-			
+				context.fillStyle = colorWheelArray[x];
+				context.fillRect(40, 450, 50, 25);
+				
+				context.fillStye = colorWheelArray[w];
+				context.fillRect(100, 450, 50, 25);
+				
+				//var compColors = "#" + ("000000" + colorWheelArray[x]).slive(-6);
 				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  A").slice(-9);
 			}
 			else if(document.getElementById('Analogous').checked)
@@ -199,6 +244,8 @@
 			$('#status').html(hex);
 
 		});
+		
+	//------------------------------------END OF MAIN FUNCTION------------------------------
 		
 		
 		// FUNCTION TO DRAW A PIE SLICE ON THE CANVAS
