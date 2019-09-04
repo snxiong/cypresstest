@@ -195,43 +195,132 @@
 				{
 					if(colorWheelArray[i] == hex)
 					{
+						w = i;
 						if(i < 6)
 						{
-							w = i;
 							x = i + 6;
 						}
 						else if(i >= 6)
 						{
-							w = i;
 							x = i - 6;
 						}
 					}
 				}	
-				document.getElementById("colorComp").innerHTML = colorWheelArray[x] + " [" + w + "] [" + x + "] ";
-				
+				document.getElementById("colorComp").innerHTML =" [" + w + "] [" + x + "] ";
+				context.fillStyle = colorWheelArray[w];
+				context.fillRect(40, 470, 50, 25);
+
 				context.fillStyle = colorWheelArray[x];
-				context.fillRect(40, 450, 50, 25);
+				context.fillRect(100, 470, 50, 25);
 				
-				context.fillStye = colorWheelArray[w];
-				context.fillRect(100, 450, 50, 25);
-				
-				//var compColors = "#" + ("000000" + colorWheelArray[x]).slive(-6);
-				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  A").slice(-9);
 			}
 			else if(document.getElementById('Analogous').checked)
 			{
-				
-				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  B").slice(-9);
+				for(i = 0; i < 12; i++)
+				{
+					if(colorWheelArray[i] == hex)
+					{
+						w = i;
+						x = i + 1;
+						y = i - 1;
+	
+						if(y < 0)
+						{
+							y = 11;
+						}
+						else if(x == 12)
+						{
+							x = 0;
+						}
+					}
+				}
+
+				context.fillStyle = colorWheelArray[y];
+				context.fillRect(40, 470, 50, 25);
+
+				context.fillStyle = colorWheelArray[w];
+				context.fillRect(100, 470, 50, 25);
+	
+				context.fillStyle = colorWheelArray[x];
+				context.fillRect(160, 470, 50, 25);
+
+				document.getElementById("colorComp").innerHTML = " [" + y + "] [" + w + "] [" + x + "]";
 			}
 			else if(document.getElementById('Triadic').checked)
 			{
-				
-				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  C").slice(-9);
+				for(i = 0; i < 12; i++)
+				{
+					if(colorWheelArray[i] == hex)
+					{
+						w = i;
+						if(w <= 3)
+						{
+							x = i + 4;
+							y = i + 8;
+						}
+						else if(w >= 4 && w <= 7)
+						{
+							x = i + 4;
+							y = i - 4;
+						}	
+						else if(w >= 8 && w <= 11)
+						{
+							x = i - 8;
+							y = i - 4;
+						}
+					}			
+				}
+				context.fillStyle = colorWheelArray[w];
+				context.fillRect(40, 470, 50, 25);
+
+				context.fillStyle = colorWheelArray[x];
+				context.fillRect(100, 470, 50, 25);
+	
+				context.fillStyle = colorWheelArray[y];
+				context.fillRect(160, 470, 50, 25);
+
+				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "]";
 			}
 			else if(document.getElementById('SplitComplementary').checked)
 			{
-				
-				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  D").slice(-9);
+				for(i = 0; i < 12; i++)
+				{
+					if(colorWheelArray[i] == hex)
+					{
+						w = i;
+						if(w <= 4)
+						{
+							x = i + 5;
+							y = i + 7;
+						}
+						else if(w >= 5 && w <= 6)
+						{
+							x = i + 5;
+							y = i - 5;
+						}
+						else if(w == 7)
+						{
+							x = i -7;
+							y = i - 5;
+						}
+						else if(w >= 8 && w <= 11)
+						{
+							x = i - 7;
+							y = i - 5;
+						}
+					}
+				}
+
+				context.fillStyle = colorWheelArray[w];
+				context.fillRect(40, 470, 50, 25);
+
+				context.fillStyle = colorWheelArray[x];
+				context.fillRect(100, 470, 50, 25);
+	
+				context.fillStyle = colorWheelArray[y];
+				context.fillRect(160, 470, 50, 25);
+
+				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "]";
 			}
 			else if(document.getElementById('TeTratic').checked)
 			{
