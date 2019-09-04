@@ -8,6 +8,13 @@
 <canvas id="example" width="500" height="500"></canvas>
 <div id="status"></div>
 
+<form>
+	<input type="radio" name="colorCombo" id="Complementary">Complementary<br>
+	<input type="radio" name="colorCombo" id="Analogous">Analogous<br>
+	<input type="radio" name="colorCombo" id="Triadic">Triadic<br>
+	<input type="radio" name="colorCombo" id="SplitComplementary">Split-Complementary<br>
+	<input type="radio" name="colorCombo" id="TeTratic">TeTratic Double-Complementary<br>
+</form>
 
 <br>
 
@@ -49,56 +56,63 @@
 		//var myCanvas = document.getElementById("example");
 		//var ctx = myCanvas.getContext("2d");
 		
+
 		//drawPieSlice(ctx, 50, 50, 25, MATH.PI/2, MATH.PI/2 + MATH.PI/4, '#ff0000');
 		
+		var complementaryColor;
+		
+		var firstCircle = ['#6b439b', '#a64499', '#e44097', '#ed1b24', '#f37020', '#f78f1e', '#ffc20f', '#fef200', '#8dfc07', '#00a88f', '#0092ce', '#0154a4'];
+		var secondCircle = ['#8869ad', '#b868ad', '#e966ac', '#f04950', '#f58d4e', '#f9a54b', '#fece3e', '#fff533', '#a3fd39', '#00a88f', '#33a7d8', '#3276b5'];
+		var thirdCircle = ['#b7a5cd', '#d3a4ce', '#f1a3cd', '#f69195', '#f9bb94', '#fbc994', '#ffe18b', '#fef984', '#c8fd87', '#84d4c9', '#85cae7', '#85acd3'];
+		
 		//1ST CIRCLE
-		drawPieSlice(context, 250,250,200, (3*Math.PI)/2, (5*Math.PI)/3, '#6b439b');
-		drawPieSlice(context, 250,250,200, (5*Math.PI)/3, (11*Math.PI)/6, '#a64499');
-		drawPieSlice(context, 250,250,200, (11*Math.PI)/6, (2*Math.PI), '#e44097');
-		drawPieSlice(context, 250,250,200, 0, (Math.PI)/6, '#ed1b24');
-		drawPieSlice(context, 250,250,200, (Math.PI)/6, (Math.PI)/3, '#f37020');
-		drawPieSlice(context, 250,250,200, (Math.PI)/3, (Math.PI)/2, '#f78f1e');
-		drawPieSlice(context, 250,250,200, (Math.PI/2), (2*Math.PI)/3, '#ffc20f');
-		drawPieSlice(context, 250,250,200, (2*Math.PI)/3, (5*Math.PI)/6, '#fef200');
-		drawPieSlice(context, 250,250,200, (5*Math.PI)/6, Math.PI, '#8dfc07');
-		drawPieSlice(context, 250,250,200, Math.PI, (7*Math.PI)/6, '#00a88f');
-		drawPieSlice(context, 250,250,200, (7*Math.PI)/6, (4*Math.PI)/3, '#0092ce');
-		drawPieSlice(context, 250,250,200, (4*Math.PI)/3, (3*Math.PI)/2, '#0154a4');
+		drawPieSlice(context, 250,250,200, (3*Math.PI)/2, (5*Math.PI)/3, firstCircle[0]);
+		drawPieSlice(context, 250,250,200, (5*Math.PI)/3, (11*Math.PI)/6, firstCircle[1]);
+		drawPieSlice(context, 250,250,200, (11*Math.PI)/6, (2*Math.PI), firstCircle[2]);
+		drawPieSlice(context, 250,250,200, 0, (Math.PI)/6, firstCircle[3]);
+		drawPieSlice(context, 250,250,200, (Math.PI)/6, (Math.PI)/3, firstCircle[4]);
+		drawPieSlice(context, 250,250,200, (Math.PI)/3, (Math.PI)/2, firstCircle[5]);
+		drawPieSlice(context, 250,250,200, (Math.PI/2), (2*Math.PI)/3, firstCircle[6]);
+		drawPieSlice(context, 250,250,200, (2*Math.PI)/3, (5*Math.PI)/6, firstCircle[7]);
+		drawPieSlice(context, 250,250,200, (5*Math.PI)/6, Math.PI, firstCircle[8]);
+		drawPieSlice(context, 250,250,200, Math.PI, (7*Math.PI)/6, firstCircle[9]);
+		drawPieSlice(context, 250,250,200, (7*Math.PI)/6, (4*Math.PI)/3, firstCircle[10]);
+		drawPieSlice(context, 250,250,200, (4*Math.PI)/3, (3*Math.PI)/2, firstCircle[11]);
 		
 		
 		drawPieSlice(context, 250,250,150, 0, (2*Math.PI), '#ffffff');
 		
 		//2ND CIRCLE
-		drawPieSlice(context, 250,250,140, (3*Math.PI)/2, (5*Math.PI)/3, '#8869ad');
-		drawPieSlice(context, 250,250,140, (5*Math.PI)/3, (11*Math.PI)/6, '#b868ad');
-		drawPieSlice(context, 250,250,140, (11*Math.PI)/6, (2*Math.PI), '#e966ac');
-		drawPieSlice(context, 250,250,140, 0, (Math.PI)/6, '#f04950');
-		drawPieSlice(context, 250,250,140, (Math.PI)/6, (Math.PI)/3, '#f58d4e');
-		drawPieSlice(context, 250,250,140, (Math.PI)/3, (Math.PI)/2, '#f9a54b');
-		drawPieSlice(context, 250,250,140, (Math.PI/2), (2*Math.PI)/3, '#fece3e');
-		drawPieSlice(context, 250,250,140, (2*Math.PI)/3, (5*Math.PI)/6, '#fff533');
-		drawPieSlice(context, 250,250,140, (5*Math.PI)/6, Math.PI, '#a3fd39');
-		drawPieSlice(context, 250,250,140, Math.PI, (7*Math.PI)/6, '#00a88f');
-		drawPieSlice(context, 250,250,140, (7*Math.PI)/6, (4*Math.PI)/3, '#33a7d8');
-		drawPieSlice(context, 250,250,140, (4*Math.PI)/3, (3*Math.PI)/2, '#3276b5');
+		drawPieSlice(context, 250,250,140, (3*Math.PI)/2, (5*Math.PI)/3, secondCircle[0]);
+		drawPieSlice(context, 250,250,140, (5*Math.PI)/3, (11*Math.PI)/6, secondCircle[1]);
+		drawPieSlice(context, 250,250,140, (11*Math.PI)/6, (2*Math.PI), secondCircle[2]);
+		drawPieSlice(context, 250,250,140, 0, (Math.PI)/6, secondCircle[3]);
+		drawPieSlice(context, 250,250,140, (Math.PI)/6, (Math.PI)/3, secondCircle[4]);
+		drawPieSlice(context, 250,250,140, (Math.PI)/3, (Math.PI)/2, secondCircle[5]);
+		drawPieSlice(context, 250,250,140, (Math.PI/2), (2*Math.PI)/3, secondCircle[6]);
+		drawPieSlice(context, 250,250,140, (2*Math.PI)/3, (5*Math.PI)/6, secondCircle[7]);
+		drawPieSlice(context, 250,250,140, (5*Math.PI)/6, Math.PI, secondCircle[8]);
+		drawPieSlice(context, 250,250,140, Math.PI, (7*Math.PI)/6, secondCircle[9]);
+		drawPieSlice(context, 250,250,140, (7*Math.PI)/6, (4*Math.PI)/3, secondCircle[10]);
+		drawPieSlice(context, 250,250,140, (4*Math.PI)/3, (3*Math.PI)/2, secondCircle[11]);
 		
 		drawPieSlice(context, 250,250,100, 0, (2*Math.PI), '#ffffff');
 		
 		//3RD CIRCLE
-		drawPieSlice(context, 250,250,90, (3*Math.PI)/2, (5*Math.PI)/3, '#b7a5cd');
-		drawPieSlice(context, 250,250,90, (5*Math.PI)/3, (11*Math.PI)/6, '#d3a4ce');
-		drawPieSlice(context, 250,250,90, (11*Math.PI)/6, (2*Math.PI), '#f1a3cd');
-		drawPieSlice(context, 250,250,90, 0, (Math.PI)/6, '#f69195');
-		drawPieSlice(context, 250,250,90, (Math.PI)/6, (Math.PI)/3, '#f9bb94');
-		drawPieSlice(context, 250,250,90, (Math.PI)/3, (Math.PI)/2, '#fbc994');
-		drawPieSlice(context, 250,250,90, (Math.PI/2), (2*Math.PI)/3, '#ffe18b');
-		drawPieSlice(context, 250,250,90, (2*Math.PI)/3, (5*Math.PI)/6, '#fef984');
-		drawPieSlice(context, 250,250,90, (5*Math.PI)/6, Math.PI, '#c8fd87');
-		drawPieSlice(context, 250,250,90, Math.PI, (7*Math.PI)/6, '#84d4c9');
-		drawPieSlice(context, 250,250,90, (7*Math.PI)/6, (4*Math.PI)/3, '#85cae7');
-		drawPieSlice(context, 250,250,90, (4*Math.PI)/3, (3*Math.PI)/2, '#85acd3');
+		drawPieSlice(context, 250,250,90, (3*Math.PI)/2, (5*Math.PI)/3, thirdCircle[0]);
+		drawPieSlice(context, 250,250,90, (5*Math.PI)/3, (11*Math.PI)/6, thirdCircle[1]);
+		drawPieSlice(context, 250,250,90, (11*Math.PI)/6, (2*Math.PI), thirdCircle[2]);
+		drawPieSlice(context, 250,250,90, 0, (Math.PI)/6, thirdCircle[3]);
+		drawPieSlice(context, 250,250,90, (Math.PI)/6, (Math.PI)/3, thirdCircle[4]);
+		drawPieSlice(context, 250,250,90, (Math.PI)/3, (Math.PI)/2, thirdCircle[5]);
+		drawPieSlice(context, 250,250,90, (Math.PI/2), (2*Math.PI)/3, thirdCircle[6]);
+		drawPieSlice(context, 250,250,90, (2*Math.PI)/3, (5*Math.PI)/6, thirdCircle[7]);
+		drawPieSlice(context, 250,250,90, (5*Math.PI)/6, Math.PI, thirdCircle[8]);
+		drawPieSlice(context, 250,250,90, Math.PI, (7*Math.PI)/6, thirdCircle[9]);
+		drawPieSlice(context, 250,250,90, (7*Math.PI)/6, (4*Math.PI)/3, thirdCircle[10]);
+		drawPieSlice(context, 250,250,90, (4*Math.PI)/3, (3*Math.PI)/2, thirdCircle[11]);
 		
-	
+		
 		
 		//
 		$('#example').mousedown(function(e) {
@@ -109,6 +123,79 @@
 			var c = this.getContext('2d');
 			var p = c.getImageData(x, y, 1, 1).data; 
 			var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+			
+			var i;
+			
+			var circleLevel = 0;
+			var colorWheelArray;
+			
+			for(i = 0; i < 12; i++)
+			{
+				if(firstCircle[i] == hex)
+				{
+					colorWheelArray = firstCircle;
+					circleLevel = 1;
+				}
+				else if(secondCircle[i] == hex)
+				{
+					colorWheelArray = secondCircle;
+					circleLevel = 2;
+				}
+				else if(thirdCircle[i] == hex)
+				{
+					colorWheelArray = thirdCircle;
+					circleLevel = 3;
+				}
+				
+				
+				if(circleLevel != 0)
+				{
+					i = 12;
+				}
+			}
+			
+			var w = 0;
+			var x = 0;
+			var y = 0;
+			var z = 0;
+			
+			if(document.getElementById('Complementary').checked)
+			{
+				for(i = 0; i < 12; i++)
+				{
+					if(colorWheelArray[i] == hex)
+					{
+						w = i;
+						x = i + 6;
+					}
+				}	
+				
+			
+				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  A").slice(-9);
+			}
+			else if(document.getElementById('Analogous').checked)
+			{
+				
+				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  B").slice(-9);
+			}
+			else if(document.getElementById('Triadic').checked)
+			{
+				
+				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  C").slice(-9);
+			}
+			else if(document.getElementById('SplitComplementary').checked)
+			{
+				
+				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  D").slice(-9);
+			}
+			else if(document.getElementById('TeTratic').checked)
+			{
+				
+				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  E").slice(-9);
+			}
+		
+			
+			
 			$('#status').html(hex);
 
 		});
