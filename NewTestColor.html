@@ -9,11 +9,11 @@
 <div id="status"></div>
 
 <form>
-	<input type="radio" name="colorCombo" id="Complementary">Complementary<br>
-	<input type="radio" name="colorCombo" id="Analogous">Analogous<br>
+	<input type="radio" name="colorCombo" id="Complementary">Complementary
+	<input type="radio" name="colorCombo" id="Analogous">Analogous
 	<input type="radio" name="colorCombo" id="Triadic">Triadic<br>
-	<input type="radio" name="colorCombo" id="SplitComplementary">Split-Complementary<br>
-	<input type="radio" name="colorCombo" id="TeTratic">TeTratic Double-Complementary<br>
+	<input type="radio" name="colorCombo" id="SplitComplementary">Split-Complementary
+	<input type="radio" name="colorCombo" id="TeTratic">TeTratic Double-Complementary
 </form>
 
 <p id="colorComp"></p>
@@ -22,6 +22,7 @@
 
 
 <script>
+		
 	
 		function findPos(obj) 
 		{
@@ -46,73 +47,88 @@
 		// set up some squares
 		var example = document.getElementById('example');
 		var context = example.getContext('2d');
-		//context.fillStyle = "rgb(255,0,0)";
-		//context.fillRect(0, 0, 50, 50);
-		
-		//context.fillStyle = "rgb(0,0,255)";
-		//context.fillRect(55, 0, 50, 50);
-		
-		//context.fillStyle = "rgb(0,255,0)";
-		//context.fillRect(55,55,50,50);
-		
-		//var myCanvas = document.getElementById("example");
-		//var ctx = myCanvas.getContext("2d");
-		
 
-		//drawPieSlice(ctx, 50, 50, 25, MATH.PI/2, MATH.PI/2 + MATH.PI/4, '#ff0000');
 		
-		var complementaryColor;
 		
 		var firstCircle = ['#6b439b', '#a64499', '#e44097', '#ed1b24', '#f37020', '#f78f1e', '#ffc20f', '#fef200', '#8dfc07', '#00a88f', '#0092ce', '#0154a4'];
-		var secondCircle = ['#8869ad', '#b868ad', '#e966ac', '#f04950', '#f58d4e', '#f9a54b', '#fece3e', '#fff533', '#a3fd39', '#00a88f', '#33a7d8', '#3276b5'];
+		var secondCircle = ['#8869ad', '#b868ad', '#e966ac', '#f04950', '#f58d4e', '#f9a54b', '#fece3e', '#fff533', '#a3fd39', '#33b8a5', '#33a7d8', '#3276b5'];
 		var thirdCircle = ['#b7a5cd', '#d3a4ce', '#f1a3cd', '#f69195', '#f9bb94', '#fbc994', '#ffe18b', '#fef984', '#c8fd87', '#84d4c9', '#85cae7', '#85acd3'];
 		
+		class pieSliceAngle{
+			constructor(startAngle, endAngle){
+				this.startAngle = startAngle;
+				this.endAngle = endAngle;
+			}
+		}
+	
+		pieSlice0 = new pieSliceAngle((3*Math.PI)/2, (5*Math.PI)/3);
+		pieSlice1 = new pieSliceAngle((5*Math.PI)/3, (11*Math.PI)/6);
+		pieSlice2 = new pieSliceAngle((11*Math.PI)/6, (2*Math.PI));
+		pieSlice3 = new pieSliceAngle(0, (Math.PI)/6);
+		pieSlice4 = new pieSliceAngle((Math.PI)/6, (Math.PI)/3);
+		pieSlice5 = new pieSliceAngle((Math.PI)/3, (Math.PI)/2);
+		pieSlice6 = new pieSliceAngle((Math.PI/2), (2*Math.PI)/3);
+		pieSlice7 = new pieSliceAngle((2*Math.PI)/3, (5*Math.PI)/6);
+		pieSlice8 = new pieSliceAngle((5*Math.PI)/6, Math.PI);
+		pieSlice9 = new pieSliceAngle(Math.PI, (7*Math.PI)/6);
+		pieSlice10 = new pieSliceAngle((7*Math.PI)/6, (4*Math.PI)/3);
+		pieSlice11 = new pieSliceAngle((4*Math.PI)/3, (3*Math.PI)/2);
+		
 		//1ST CIRCLE
-		drawPieSlice(context, 250,250,200, (3*Math.PI)/2, (5*Math.PI)/3, firstCircle[0]);
-		drawPieSlice(context, 250,250,200, (5*Math.PI)/3, (11*Math.PI)/6, firstCircle[1]);
-		drawPieSlice(context, 250,250,200, (11*Math.PI)/6, (2*Math.PI), firstCircle[2]);
-		drawPieSlice(context, 250,250,200, 0, (Math.PI)/6, firstCircle[3]);
-		drawPieSlice(context, 250,250,200, (Math.PI)/6, (Math.PI)/3, firstCircle[4]);
-		drawPieSlice(context, 250,250,200, (Math.PI)/3, (Math.PI)/2, firstCircle[5]);
-		drawPieSlice(context, 250,250,200, (Math.PI/2), (2*Math.PI)/3, firstCircle[6]);
-		drawPieSlice(context, 250,250,200, (2*Math.PI)/3, (5*Math.PI)/6, firstCircle[7]);
-		drawPieSlice(context, 250,250,200, (5*Math.PI)/6, Math.PI, firstCircle[8]);
-		drawPieSlice(context, 250,250,200, Math.PI, (7*Math.PI)/6, firstCircle[9]);
-		drawPieSlice(context, 250,250,200, (7*Math.PI)/6, (4*Math.PI)/3, firstCircle[10]);
-		drawPieSlice(context, 250,250,200, (4*Math.PI)/3, (3*Math.PI)/2, firstCircle[11]);
+		
+		drawPieSlice(context, 250,250,200, pieSlice0.startAngle, pieSlice0.endAngle, firstCircle[0]);
+		
+
+		drawPieSlice(context, 250,250,200, pieSlice1.startAngle, pieSlice1.endAngle, firstCircle[1]);
+		drawPieSlice(context, 250,250,200, pieSlice2.startAngle, pieSlice2.endAngle, firstCircle[2]);
+		drawPieSlice(context, 250,250,200, pieSlice3.startAngle, pieSlice3.endAngle, firstCircle[3]);
+		drawPieSlice(context, 250,250,200, pieSlice4.startAngle, pieSlice4.endAngle, firstCircle[4]);
+		drawPieSlice(context, 250,250,200, pieSlice5.startAngle, pieSlice5.endAngle, firstCircle[5]);
+		drawPieSlice(context, 250,250,200, pieSlice6.startAngle, pieSlice6.endAngle, firstCircle[6]);
+		drawPieSlice(context, 250,250,200, pieSlice7.startAngle, pieSlice7.endAngle, firstCircle[7]);
+		drawPieSlice(context, 250,250,200, pieSlice8.startAngle, pieSlice8.endAngle, firstCircle[8]);
+		drawPieSlice(context, 250,250,200, pieSlice9.startAngle, pieSlice9.endAngle, firstCircle[9]);
+		drawPieSlice(context, 250,250,200, pieSlice10.startAngle, pieSlice10.endAngle, firstCircle[10]);
+		drawPieSlice(context, 250,250,200, pieSlice11.startAngle, pieSlice11.endAngle, firstCircle[11]);
 		
 		
-		drawPieSlice(context, 250,250,150, 0, (2*Math.PI), '#ffffff');
+		drawPieSlice(context, 250,250,145, 0, (2*Math.PI), '#ffffff');
 		
 		//2ND CIRCLE
-		drawPieSlice(context, 250,250,140, (3*Math.PI)/2, (5*Math.PI)/3, secondCircle[0]);
-		drawPieSlice(context, 250,250,140, (5*Math.PI)/3, (11*Math.PI)/6, secondCircle[1]);
-		drawPieSlice(context, 250,250,140, (11*Math.PI)/6, (2*Math.PI), secondCircle[2]);
-		drawPieSlice(context, 250,250,140, 0, (Math.PI)/6, secondCircle[3]);
-		drawPieSlice(context, 250,250,140, (Math.PI)/6, (Math.PI)/3, secondCircle[4]);
-		drawPieSlice(context, 250,250,140, (Math.PI)/3, (Math.PI)/2, secondCircle[5]);
-		drawPieSlice(context, 250,250,140, (Math.PI/2), (2*Math.PI)/3, secondCircle[6]);
-		drawPieSlice(context, 250,250,140, (2*Math.PI)/3, (5*Math.PI)/6, secondCircle[7]);
-		drawPieSlice(context, 250,250,140, (5*Math.PI)/6, Math.PI, secondCircle[8]);
-		drawPieSlice(context, 250,250,140, Math.PI, (7*Math.PI)/6, secondCircle[9]);
-		drawPieSlice(context, 250,250,140, (7*Math.PI)/6, (4*Math.PI)/3, secondCircle[10]);
-		drawPieSlice(context, 250,250,140, (4*Math.PI)/3, (3*Math.PI)/2, secondCircle[11]);
+		drawPieSlice(context, 250,250,140, pieSlice0.startAngle, pieSlice0.endAngle, secondCircle[0]);
+		drawPieSlice(context, 250,250,140, pieSlice1.startAngle, pieSlice1.endAngle, secondCircle[1]);
+		drawPieSlice(context, 250,250,140, pieSlice2.startAngle, pieSlice2.endAngle, secondCircle[2]);
+		drawPieSlice(context, 250,250,140, pieSlice3.startAngle, pieSlice3.endAngle, secondCircle[3]);
+		drawPieSlice(context, 250,250,140, pieSlice4.startAngle, pieSlice4.endAngle, secondCircle[4]);
+		drawPieSlice(context, 250,250,140, pieSlice5.startAngle, pieSlice5.endAngle, secondCircle[5]);
+		drawPieSlice(context, 250,250,140, pieSlice6.startAngle, pieSlice6.endAngle, secondCircle[6]);
+		drawPieSlice(context, 250,250,140, pieSlice7.startAngle, pieSlice7.endAngle, secondCircle[7]);
+		drawPieSlice(context, 250,250,140, pieSlice8.startAngle, pieSlice8.endAngle, secondCircle[8]);
+		drawPieSlice(context, 250,250,140, pieSlice9.startAngle, pieSlice9.endAngle, secondCircle[9]);
+		drawPieSlice(context, 250,250,140, pieSlice10.startAngle, pieSlice10.endAngle, secondCircle[10]);
+		drawPieSlice(context, 250,250,140, pieSlice11.startAngle, pieSlice11.endAngle, secondCircle[11]);
 		
-		drawPieSlice(context, 250,250,100, 0, (2*Math.PI), '#ffffff');
+		drawPieSlice(context, 250,250,95, 0, (2*Math.PI), '#ffffff');
 		
 		//3RD CIRCLE
-		drawPieSlice(context, 250,250,90, (3*Math.PI)/2, (5*Math.PI)/3, thirdCircle[0]);
-		drawPieSlice(context, 250,250,90, (5*Math.PI)/3, (11*Math.PI)/6, thirdCircle[1]);
-		drawPieSlice(context, 250,250,90, (11*Math.PI)/6, (2*Math.PI), thirdCircle[2]);
-		drawPieSlice(context, 250,250,90, 0, (Math.PI)/6, thirdCircle[3]);
-		drawPieSlice(context, 250,250,90, (Math.PI)/6, (Math.PI)/3, thirdCircle[4]);
-		drawPieSlice(context, 250,250,90, (Math.PI)/3, (Math.PI)/2, thirdCircle[5]);
-		drawPieSlice(context, 250,250,90, (Math.PI/2), (2*Math.PI)/3, thirdCircle[6]);
-		drawPieSlice(context, 250,250,90, (2*Math.PI)/3, (5*Math.PI)/6, thirdCircle[7]);
-		drawPieSlice(context, 250,250,90, (5*Math.PI)/6, Math.PI, thirdCircle[8]);
-		drawPieSlice(context, 250,250,90, Math.PI, (7*Math.PI)/6, thirdCircle[9]);
-		drawPieSlice(context, 250,250,90, (7*Math.PI)/6, (4*Math.PI)/3, thirdCircle[10]);
-		drawPieSlice(context, 250,250,90, (4*Math.PI)/3, (3*Math.PI)/2, thirdCircle[11]);
+		drawPieSlice(context, 250,250,90, pieSlice0.startAngle, pieSlice0.endAngle, thirdCircle[0]);
+		drawPieSlice(context, 250,250,90, pieSlice1.startAngle, pieSlice1.endAngle, thirdCircle[1]);
+		drawPieSlice(context, 250,250,90, pieSlice2.startAngle, pieSlice2.endAngle, thirdCircle[2]);
+		drawPieSlice(context, 250,250,90, pieSlice3.startAngle, pieSlice3.endAngle, thirdCircle[3]);
+		drawPieSlice(context, 250,250,90, pieSlice4.startAngle, pieSlice4.endAngle, thirdCircle[4]);
+		drawPieSlice(context, 250,250,90, pieSlice5.startAngle, pieSlice5.endAngle, thirdCircle[5]);
+		drawPieSlice(context, 250,250,90, pieSlice6.startAngle, pieSlice6.endAngle, thirdCircle[6]);
+		drawPieSlice(context, 250,250,90, pieSlice7.startAngle, pieSlice7.endAngle, thirdCircle[7]);
+		drawPieSlice(context, 250,250,90, pieSlice8.startAngle, pieSlice8.endAngle, thirdCircle[8]);
+		drawPieSlice(context, 250,250,90, pieSlice9.startAngle, pieSlice9.endAngle, thirdCircle[9]);
+		drawPieSlice(context, 250,250,90, pieSlice10.startAngle, pieSlice10.endAngle, thirdCircle[10]);
+		drawPieSlice(context, 250,250,90, pieSlice11.startAngle, pieSlice11.endAngle, thirdCircle[11]);
+
+		drawPieSliceOutline(context, 250, 250, 200,(3*Math.PI)/2, (5*Math.PI)/3, '#000000');
+
+
+		
+		//drawPieSlice(context, 250,250,45, 0, (2*Math.PI), '#ffffff');
 		
 		
 		var firstComplementary;
@@ -212,6 +228,14 @@
 
 				context.fillStyle = colorWheelArray[x];
 				context.fillRect(100, 470, 50, 25);
+
+				context.fillStyle = "#ffffff";
+				context.fillRect(160, 470, 50, 25);
+
+				context.fillStyle = "#ffffff";
+				context.fillRect(220, 470, 50, 25);
+
+
 				
 			}
 			else if(document.getElementById('Analogous').checked)
@@ -243,6 +267,9 @@
 	
 				context.fillStyle = colorWheelArray[x];
 				context.fillRect(160, 470, 50, 25);
+
+				context.fillStyle = "#ffffff";
+				context.fillRect(220, 470, 50, 25);
 
 				document.getElementById("colorComp").innerHTML = " [" + y + "] [" + w + "] [" + x + "]";
 			}
@@ -278,6 +305,9 @@
 	
 				context.fillStyle = colorWheelArray[y];
 				context.fillRect(160, 470, 50, 25);
+			
+				context.fillStyle = "#ffffff";
+				context.fillRect(220, 470, 50, 25);
 
 				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "]";
 			}
@@ -320,17 +350,67 @@
 				context.fillStyle = colorWheelArray[y];
 				context.fillRect(160, 470, 50, 25);
 
+				context.fillStyle = "#ffffff";
+				context.fillRect(220, 470, 50, 25);
+
 				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "]";
 			}
 			else if(document.getElementById('TeTratic').checked)
 			{
+				for(i = 0; i < 12; i++)
+				{
+					
+					if(colorWheelArray[i] == hex)
+					{
+						w = i;
+						if(w >= 0 && w <= 1)
+						{
+							x = i + 4;
+							y = i + 6;
+							z = i + 10;
+						}
+						else if(w >= 2 && w <= 5)
+						{
+							x = i + 4;
+							y = i + 6;
+							z = i - 2;
+						}
+						else if(w >= 6 && w <= 7)
+						{
+							x = i + 4;
+							y = i - 6;
+							z = i - 2;
+						}
+						else if(w >= 8 && w <= 11)
+						{
+							x = i - 8;
+							y = i - 6;
+							z = i - 2;
+						}
+					}
+					
+				}
+
+				context.fillStyle = colorWheelArray[w];
+				context.fillRect(40, 470, 50, 25);
+
+				context.fillStyle = colorWheelArray[x];
+				context.fillRect(100, 470, 50, 25);
+	
+				context.fillStyle = colorWheelArray[y];
+				context.fillRect(160, 470, 50, 25);
+
+				context.fillStyle = colorWheelArray[z];
+				context.fillRect(220, 470, 50, 25);
+
+				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "] [" + z + "]";
 				
 				//var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2]) + "  E").slice(-9);
 			}
 		
 			
 			
-			$('#status').html(hex);
+			//$('#status').html(hex);
 
 		});
 		
@@ -340,12 +420,26 @@
 		// FUNCTION TO DRAW A PIE SLICE ON THE CANVAS
 		function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color )
 		{
+			startAngle = startAngle + .01;
+			endAngle = endAngle - .01;			
 			ctx.fillStyle = color;
 			ctx.beginPath();
 			ctx.moveTo(centerX,centerY);
 			ctx.arc(centerX, centerY, radius, startAngle, endAngle);
 			ctx.closePath();
 			ctx.fill();
+		}
+		
+
+		function drawPieSliceOutline(ctx, centerX, centerY, radius, startAngle, endAngle, color)
+		{
+			ctx.fillStyle = color;
+			ctx.beginPath();
+			ctx.moveTo(centerX,centerY);
+			ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+			ctx.closePath();
+			ctx.lineWidth = 5;
+			ctx.stroke();
 		}
 		
 		
