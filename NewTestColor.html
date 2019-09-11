@@ -58,6 +58,8 @@
 		//STORED ALL THE ABOVE PIESLICE RADIANS INTO AN ARRAY, SO AN ARRAY OF PIE SLICE ANGLE CLASSES
 		var pieSliceArray = [pieSlice0, pieSlice1, pieSlice2, pieSlice3, pieSlice4, pieSlice5, pieSlice6, pieSlice7, pieSlice8, pieSlice9, pieSlice10, pieSlice11];
 		
+		
+		//function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color )
 		//1ST CIRCLE
 		drawPieSlice(context, 250,250,200, pieSliceArray[0].startAngle, pieSliceArray[0].endAngle, firstCircle[0]);
 		drawPieSlice(context, 250,250,200, pieSliceArray[1].startAngle, pieSliceArray[1].endAngle, firstCircle[1]);
@@ -104,6 +106,21 @@
 		drawPieSlice(context, 250,250,90, pieSliceArray[9].startAngle, pieSliceArray[9].endAngle, thirdCircle[9]);
 		drawPieSlice(context, 250,250,90, pieSliceArray[10].startAngle, pieSliceArray[10].endAngle, thirdCircle[10]);
 		drawPieSlice(context, 250,250,90, pieSliceArray[11].startAngle, pieSliceArray[11].endAngle, thirdCircle[11]);
+		
+		/*			TERESA'S WORKING ON THIS PART
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[0].startAngle, pieSliceArray[0].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[1].startAngle, pieSliceArray[1].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[2].startAngle, pieSliceArray[2].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[3].startAngle, pieSliceArray[3].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[4].startAngle, pieSliceArray[4].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[5].startAngle, pieSliceArray[5].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[6].startAngle, pieSliceArray[6].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[7].startAngle, pieSliceArray[7].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[8].startAngle, pieSliceArray[8].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[9].startAngle, pieSliceArray[9].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[10].startAngle, pieSliceArray[10].endAngle, '#ffffff');
+		drawPieSliceOutline(context, 250,250,200, pieSliceArray[11].startAngle, pieSliceArray[11].endAngle, '#ffffff');
+		*/
 		
 		//-----------------------------------------------------------------------
 		//-------------------------------- BASICALLY MAIN FUNCTION---------------
@@ -155,6 +172,8 @@
 			var y = 0;
 			var z = 0;
 			
+			
+			
 			// IF STATEMENTS THAT WILL FIGURE OUT THE REST OF THE COLOR COMBINATIONS;
 			//===============================================================================
 			//======================	COMPLEMENTARY CODE SECTION ==========================
@@ -181,6 +200,7 @@
 				//DRAWS SMALL RECTANGLE AND FILL THEM WITH THE COLOR OF THE COLOR COMBO THAT THE USER SELECTED
 				context.fillStyle = colorWheelArray[w];
 				context.fillRect(40, 470, 50, 25);
+				// fillRect(x-cord,y-cord,rectangleLength,rectangleHeight);
 
 				context.fillStyle = colorWheelArray[x];
 				context.fillRect(100, 470, 50, 25);
@@ -190,6 +210,11 @@
 
 				context.fillStyle = "#ffffff";
 				context.fillRect(220, 470, 50, 25);
+				
+				//EXPERIEMENT CODE THAT NEEDS TO BE WORKED ON
+				var compArray = [w, x, 12, 12];
+				//piesliceoutlinereset(); call whitepieoutline
+				pieSliceSelector(context,compArray); // drawing the outline
 				
 				document.getElementById("colorComp").innerHTML =" [" + w + "] [" + x + "] ";
 			}
@@ -374,6 +399,10 @@
 
 				context.fillStyle = colorWheelArray[z];
 				context.fillRect(220, 470, 50, 25);
+				
+				//EXPERIEMENT CODE THAT NEEDS TO BE WORKED ON
+				var TETRATICArray = [w, x, y, z];
+				pieSliceSelector(context,TETRATICArray);
 
 				document.getElementById("colorComp").innerHTML = " [" + w + "] [" + x + "] [" + y + "] [" + z + "]";
 				
@@ -499,6 +528,7 @@
 		
 		
 </script>
+
 
 
 </body>
